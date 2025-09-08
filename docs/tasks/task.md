@@ -1,0 +1,1 @@
+use jira mcp to get the jira issue 
