@@ -19,7 +19,7 @@ const mockFetch = vi.fn()
 vi.stubGlobal('fetch', mockFetch)
 
 describe('Tenant Configuration Loading Utility', () => {
-  let mockEnvVars: EnvironmentVariables
+  let mockEnvVars: Record<string, string>
   let validTenantConfig: TenantConfig
 
   beforeEach(async () => {
@@ -73,7 +73,7 @@ describe('Tenant Configuration Loading Utility', () => {
 
     // Mock getValidatedEnvironmentVariables
     const envModule = await import('./env')
-    vi.mocked(envModule.getValidatedEnvironmentVariables).mockReturnValue(mockEnvVars)
+    vi.mocked(envModule.getValidatedEnvironmentVariables).mockReturnValue(mockEnvVars as unknown as EnvironmentVariables)
   })
 
   afterEach(() => {
