@@ -3,6 +3,7 @@ import { Button } from '@/components/atoms/Button'
 import { Input } from '@/components/atoms/Input'
 import { Icon } from '@/components/atoms/Icon'
 import { Text } from '@/components/atoms/Text'
+import { Link } from '@/components/atoms/Link'
 
 /**
  * Home page component demonstrating basic components and layout
@@ -176,6 +177,182 @@ export const HomePage: React.FC = () => {
               <Text variant="code" size="sm" color="primary">
                 Status: Processing your request...
               </Text>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Link Component Demo Section */}
+      <div className="mt-16 rounded-lg bg-blue-50 p-8">
+        <Text variant="h2" className="mb-8 text-center">
+          Link Component Examples
+        </Text>
+
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {/* Internal Navigation */}
+          <div>
+            <Text variant="h4" className="mb-4">Internal Navigation</Text>
+            <div className="space-y-3">
+              <div>
+                <Link to="/">Home Page</Link>
+              </div>
+              <div>
+                <Link to="/dashboard" variant="subtle">Dashboard (Subtle)</Link>
+              </div>
+              <div>
+                <Link to="/settings" variant="contrast" underline="always">
+                  Settings (Always Underlined)
+                </Link>
+              </div>
+              <div>
+                <Link to="/profile" size="sm">Small Profile Link</Link>
+              </div>
+              <div>
+                <Link to="/coming-soon" disabled>
+                  Coming Soon (Disabled)
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* External Links */}
+          <div>
+            <Text variant="h4" className="mb-4">External Links</Text>
+            <div className="space-y-3">
+              <div>
+                <Link href="https://react.dev">React Documentation</Link>
+              </div>
+              <div>
+                <Link href="https://vitejs.dev" variant="subtle">
+                  Vite Build Tool
+                </Link>
+              </div>
+              <div>
+                <Link href="https://tailwindcss.com" underline="none">
+                  Tailwind CSS (No Underline)
+                </Link>
+              </div>
+              <div>
+                <Link href="https://github.com" showExternalIcon={false}>
+                  GitHub (No Icon)
+                </Link>
+              </div>
+              <div>
+                <Link href="/internal-docs" showExternalIcon>
+                  Internal Docs (Forced Icon)
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Styled & Special Links */}
+          <div>
+            <Text variant="h4" className="mb-4">Styled & Special Links</Text>
+            <div className="space-y-3">
+              <div>
+                <Link
+                  href="mailto:support@example.com"
+                  variant="contrast"
+                  className="font-medium"
+                >
+                  Email Support
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href="tel:+1234567890"
+                  variant="subtle"
+                  underline="always"
+                  size="lg"
+                >
+                  Call Us: (123) 456-7890
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href="/api/download"
+                  showExternalIcon={false}
+                  className="inline-flex items-center gap-2 rounded bg-primary-600 px-3 py-2 text-sm text-white hover:bg-primary-700"
+                >
+                  <Icon name="Download" size="sm" aria-hidden />
+                  Download Report
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to="/premium"
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent font-bold"
+                  underline="none"
+                >
+                  Upgrade to Premium
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* AI Chatbot Link Examples */}
+        <div className="mt-8">
+          <Text variant="h4" className="mb-4">AI Chatbot Link Use Cases</Text>
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <div className="rounded-lg bg-white p-4 shadow-sm">
+              <Text variant="h5" className="mb-3">Chat Message with Links</Text>
+              <Text className="mb-4">
+                Based on your question about React, I recommend checking out the{' '}
+                <Link href="https://react.dev/learn" variant="subtle">
+                  official React tutorial
+                </Link>{' '}
+                and the{' '}
+                <Link href="https://react.dev/reference" variant="subtle">
+                  API reference
+                </Link>
+                . You can also explore our{' '}
+                <Link to="/examples" underline="always">
+                  internal examples
+                </Link>{' '}
+                for more practical demonstrations.
+              </Text>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <Link to="/chat/history" variant="subtle" size="sm">
+                  View Chat History
+                </Link>
+                <Link href="/api/export" showExternalIcon={false} size="sm">
+                  Export Conversation
+                </Link>
+                <Link to="/help/commands" variant="subtle" size="sm">
+                  Command Reference
+                </Link>
+              </div>
+            </div>
+
+            <div className="rounded-lg bg-white p-4 shadow-sm">
+              <Text variant="h5" className="mb-3">Resource References</Text>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Icon name="ExternalLink" size="sm" className="text-muted" aria-hidden />
+                  <Link href="https://openai.com/research" variant="default">
+                    OpenAI Research Papers
+                  </Link>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Icon name="FileText" size="sm" className="text-muted" aria-hidden />
+                  <Link to="/docs/api" variant="subtle">
+                    API Documentation
+                  </Link>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Icon name="Settings" size="sm" className="text-muted" aria-hidden />
+                  <Link to="/settings/api" variant="contrast">
+                    API Configuration
+                  </Link>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Icon name="HelpCircle" size="sm" className="text-muted" aria-hidden />
+                  <Link href="https://help.example.com" size="sm">
+                    Get Help & Support
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
