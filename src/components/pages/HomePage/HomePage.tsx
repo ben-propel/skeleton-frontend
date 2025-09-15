@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/atoms/Button'
 import { Input } from '@/components/atoms/Input'
+import { Icon } from '@/components/atoms/Icon'
 
 /**
  * Home page component demonstrating basic components and layout
@@ -41,12 +42,15 @@ export const HomePage: React.FC = () => {
             
             <div className="flex justify-center gap-4">
               <Button variant="primary" onClick={handleButtonClick}>
+                <Icon name="Star" size="sm" className="mr-2" aria-hidden />
                 Primary Button
               </Button>
               <Button variant="secondary" onClick={handleButtonClick}>
+                <Icon name="Heart" size="sm" className="mr-2" aria-hidden />
                 Secondary
               </Button>
               <Button variant="outline" onClick={handleButtonClick}>
+                <Icon name="Settings" size="sm" className="mr-2" aria-hidden />
                 Outline
               </Button>
             </div>
