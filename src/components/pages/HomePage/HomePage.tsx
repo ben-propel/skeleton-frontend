@@ -75,196 +75,6 @@ export const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Spinner Component Demo Section */}
-      <div className="mt-16 rounded-lg bg-green-50 p-8">
-        <Text variant="h2" className="mb-8 text-center">
-          Spinner Component Examples
-        </Text>
-
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {/* Size & Animation Variants */}
-          <div>
-            <Text variant="h4" className="mb-4">Size & Animation Variants</Text>
-            <div className="space-y-4">
-              {/* Sizes */}
-              <div>
-                <Text variant="h5" size="sm" className="mb-2">Sizes</Text>
-                <div className="flex items-center gap-4">
-                  <Spinner size="xs" aria-label="Extra small spinner" />
-                  <Spinner size="sm" aria-label="Small spinner" />
-                  <Spinner size="md" aria-label="Medium spinner" />
-                  <Spinner size="lg" aria-label="Large spinner" />
-                  <Spinner size="xl" aria-label="Extra large spinner" />
-                </div>
-                <Text size="xs" color="muted" className="mt-1">xs, sm, md, lg, xl</Text>
-              </div>
-
-              {/* Animation Styles */}
-              <div>
-                <Text variant="h5" size="sm" className="mb-2">Animation Styles</Text>
-                <div className="flex items-center gap-4">
-                  <div className="text-center">
-                    <Spinner variant="spin" size="lg" aria-label="Spinning animation" />
-                    <Text size="xs" color="muted" className="mt-1">Spin</Text>
-                  </div>
-                  <div className="text-center">
-                    <Spinner variant="pulse" size="lg" aria-label="Pulsing animation" />
-                    <Text size="xs" color="muted" className="mt-1">Pulse</Text>
-                  </div>
-                  <div className="text-center">
-                    <Spinner variant="dots" size="lg" aria-label="Dots animation" />
-                    <Text size="xs" color="muted" className="mt-1">Dots</Text>
-                  </div>
-                </div>
-              </div>
-
-              {/* Speed Controls */}
-              <div>
-                <Text variant="h5" size="sm" className="mb-2">Speed Controls</Text>
-                <div className="flex items-center gap-4">
-                  <div className="text-center">
-                    <Spinner speed="slow" size="md" aria-label="Slow spinner" />
-                    <Text size="xs" color="muted" className="mt-1">Slow</Text>
-                  </div>
-                  <div className="text-center">
-                    <Spinner speed="normal" size="md" aria-label="Normal spinner" />
-                    <Text size="xs" color="muted" className="mt-1">Normal</Text>
-                  </div>
-                  <div className="text-center">
-                    <Spinner speed="fast" size="md" aria-label="Fast spinner" />
-                    <Text size="xs" color="muted" className="mt-1">Fast</Text>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Color Variants */}
-          <div>
-            <Text variant="h4" className="mb-4">Color Variants</Text>
-            <div className="grid grid-cols-2 gap-3">
-              <div className="flex items-center gap-2">
-                <Spinner color="primary" size="sm" aria-label="Primary color spinner" />
-                <Text size="sm">Primary</Text>
-              </div>
-              <div className="flex items-center gap-2">
-                <Spinner color="secondary" size="sm" aria-label="Secondary color spinner" />
-                <Text size="sm">Secondary</Text>
-              </div>
-              <div className="flex items-center gap-2">
-                <Spinner color="success" size="sm" aria-label="Success color spinner" />
-                <Text size="sm">Success</Text>
-              </div>
-              <div className="flex items-center gap-2">
-                <Spinner color="warning" size="sm" aria-label="Warning color spinner" />
-                <Text size="sm">Warning</Text>
-              </div>
-              <div className="flex items-center gap-2">
-                <Spinner color="destructive" size="sm" aria-label="Destructive color spinner" />
-                <Text size="sm">Destructive</Text>
-              </div>
-              <div className="flex items-center gap-2">
-                <Spinner color="muted" size="sm" aria-label="Muted color spinner" />
-                <Text size="sm">Muted</Text>
-              </div>
-            </div>
-          </div>
-
-          {/* Interactive Examples */}
-          <div>
-            <Text variant="h4" className="mb-4">Interactive Examples</Text>
-            <div className="space-y-4">
-              {/* Message Sending */}
-              <div>
-                <Button
-                  variant={loadingStates.message ? "secondary" : "primary"}
-                  onClick={() => toggleLoading('message')}
-                  className="w-full"
-                >
-                  {loadingStates.message ? (
-                    <>
-                      <Spinner size="xs" color="current" className="mr-2" />
-                      Sending Message...
-                    </>
-                  ) : (
-                    <>
-                      <Icon name="Send" size="sm" className="mr-2" aria-hidden />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* File Upload */}
-              <div>
-                <Button
-                  variant={loadingStates.upload ? "secondary" : "outline"}
-                  onClick={() => toggleLoading('upload')}
-                  className="w-full"
-                >
-                  {loadingStates.upload ? (
-                    <>
-                      <Spinner variant="dots" size="sm" color="current" className="mr-2" />
-                      Uploading...
-                    </>
-                  ) : (
-                    <>
-                      <Icon name="Upload" size="sm" className="mr-2" aria-hidden />
-                      Upload File
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Search */}
-              <div>
-                <Button
-                  variant={loadingStates.search ? "secondary" : "outline"}
-                  onClick={() => toggleLoading('search')}
-                  className="w-full"
-                >
-                  {loadingStates.search ? (
-                    <>
-                      <Spinner variant="pulse" size="sm" color="current" className="mr-2" />
-                      Searching...
-                    </>
-                  ) : (
-                    <>
-                      <Icon name="Search" size="sm" className="mr-2" aria-hidden />
-                      Search AI
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Overlay Example */}
-              <div>
-                <Button
-                  variant="secondary"
-                  onClick={() => toggleLoading('overlay')}
-                  className="w-full"
-                >
-                  <Icon name="Loader" size="sm" className="mr-2" aria-hidden />
-                  Show Overlay
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Overlay Spinner (conditionally rendered) */}
-      {loadingStates.overlay && (
-        <div onClick={() => toggleLoading('overlay')} className="cursor-pointer">
-          <Spinner
-            overlay
-            backdrop="blur"
-            size="xl"
-            aria-label="Loading application data - click to close"
-          />
-        </div>
-      )}
-
       {/* Features Section */}
       <div className="mt-16">
         <Text variant="h2" className="text-center">
@@ -650,6 +460,196 @@ export const HomePage: React.FC = () => {
           </Text>
         </div>
       </div>
+
+      {/* Spinner Component Demo Section */}
+      <div className="mt-16 rounded-lg bg-green-50 p-8">
+        <Text variant="h2" className="mb-8 text-center">
+          Spinner Component Examples
+        </Text>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {/* Size & Animation Variants */}
+          <div>
+            <Text variant="h4" className="mb-4">Size & Animation Variants</Text>
+            <div className="space-y-4">
+              {/* Sizes */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Sizes</Text>
+                <div className="flex items-center gap-4">
+                  <Spinner size="xs" aria-label="Extra small spinner" />
+                  <Spinner size="sm" aria-label="Small spinner" />
+                  <Spinner size="md" aria-label="Medium spinner" />
+                  <Spinner size="lg" aria-label="Large spinner" />
+                  <Spinner size="xl" aria-label="Extra large spinner" />
+                </div>
+                <Text size="xs" color="muted" className="mt-1">xs, sm, md, lg, xl</Text>
+              </div>
+
+              {/* Animation Styles */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Animation Styles</Text>
+                <div className="flex items-center gap-4">
+                  <div className="text-center">
+                    <Spinner variant="spin" size="lg" aria-label="Spinning animation" />
+                    <Text size="xs" color="muted" className="mt-1">Spin</Text>
+                  </div>
+                  <div className="text-center">
+                    <Spinner variant="pulse" size="lg" aria-label="Pulsing animation" />
+                    <Text size="xs" color="muted" className="mt-1">Pulse</Text>
+                  </div>
+                  <div className="text-center">
+                    <Spinner variant="dots" size="lg" aria-label="Dots animation" />
+                    <Text size="xs" color="muted" className="mt-1">Dots</Text>
+                  </div>
+                </div>
+              </div>
+
+              {/* Speed Controls */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Speed Controls</Text>
+                <div className="flex items-center gap-4">
+                  <div className="text-center">
+                    <Spinner speed="slow" size="md" aria-label="Slow spinner" />
+                    <Text size="xs" color="muted" className="mt-1">Slow</Text>
+                  </div>
+                  <div className="text-center">
+                    <Spinner speed="normal" size="md" aria-label="Normal spinner" />
+                    <Text size="xs" color="muted" className="mt-1">Normal</Text>
+                  </div>
+                  <div className="text-center">
+                    <Spinner speed="fast" size="md" aria-label="Fast spinner" />
+                    <Text size="xs" color="muted" className="mt-1">Fast</Text>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Color Variants */}
+          <div>
+            <Text variant="h4" className="mb-4">Color Variants</Text>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="flex items-center gap-2">
+                <Spinner color="primary" size="sm" aria-label="Primary color spinner" />
+                <Text size="sm">Primary</Text>
+              </div>
+              <div className="flex items-center gap-2">
+                <Spinner color="secondary" size="sm" aria-label="Secondary color spinner" />
+                <Text size="sm">Secondary</Text>
+              </div>
+              <div className="flex items-center gap-2">
+                <Spinner color="success" size="sm" aria-label="Success color spinner" />
+                <Text size="sm">Success</Text>
+              </div>
+              <div className="flex items-center gap-2">
+                <Spinner color="warning" size="sm" aria-label="Warning color spinner" />
+                <Text size="sm">Warning</Text>
+              </div>
+              <div className="flex items-center gap-2">
+                <Spinner color="destructive" size="sm" aria-label="Destructive color spinner" />
+                <Text size="sm">Destructive</Text>
+              </div>
+              <div className="flex items-center gap-2">
+                <Spinner color="muted" size="sm" aria-label="Muted color spinner" />
+                <Text size="sm">Muted</Text>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Examples */}
+          <div>
+            <Text variant="h4" className="mb-4">Interactive Examples</Text>
+            <div className="space-y-4">
+              {/* Message Sending */}
+              <div>
+                <Button
+                  variant={loadingStates.message ? "secondary" : "primary"}
+                  onClick={() => toggleLoading('message')}
+                  className="w-full"
+                >
+                  {loadingStates.message ? (
+                    <>
+                      <Spinner size="xs" color="current" className="mr-2" />
+                      Sending Message...
+                    </>
+                  ) : (
+                    <>
+                      <Icon name="Send" size="sm" className="mr-2" aria-hidden />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </div>
+
+              {/* File Upload */}
+              <div>
+                <Button
+                  variant={loadingStates.upload ? "secondary" : "outline"}
+                  onClick={() => toggleLoading('upload')}
+                  className="w-full"
+                >
+                  {loadingStates.upload ? (
+                    <>
+                      <Spinner variant="dots" size="sm" color="current" className="mr-2" />
+                      Uploading...
+                    </>
+                  ) : (
+                    <>
+                      <Icon name="Upload" size="sm" className="mr-2" aria-hidden />
+                      Upload File
+                    </>
+                  )}
+                </Button>
+              </div>
+
+              {/* Search */}
+              <div>
+                <Button
+                  variant={loadingStates.search ? "secondary" : "outline"}
+                  onClick={() => toggleLoading('search')}
+                  className="w-full"
+                >
+                  {loadingStates.search ? (
+                    <>
+                      <Spinner variant="pulse" size="sm" color="current" className="mr-2" />
+                      Searching...
+                    </>
+                  ) : (
+                    <>
+                      <Icon name="Search" size="sm" className="mr-2" aria-hidden />
+                      Search AI
+                    </>
+                  )}
+                </Button>
+              </div>
+
+              {/* Overlay Example */}
+              <div>
+                <Button
+                  variant="secondary"
+                  onClick={() => toggleLoading('overlay')}
+                  className="w-full"
+                >
+                  <Icon name="Loader" size="sm" className="mr-2" aria-hidden />
+                  Show Overlay
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Overlay Spinner (conditionally rendered) */}
+      {loadingStates.overlay && (
+        <div onClick={() => toggleLoading('overlay')} className="cursor-pointer">
+          <Spinner
+            overlay
+            backdrop="blur"
+            size="xl"
+            aria-label="Loading application data - click to close"
+          />
+        </div>
+      )}
+
     </div>
   )
 }
