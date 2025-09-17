@@ -12,6 +12,8 @@ This is a React TypeScript frontend skeleton project for Propel Ventures, design
 - **Framework**: React 18+ with TypeScript 5+
 - **Build Tool**: Vite (assumed based on modern React setup)
 - **Styling**: Tailwind CSS with utility-first approach
+- **UI Components**: shadcn/ui component system with Radix UI primitives
+- **Icons**: Lucide React icon library
 - **State Management**: Context API patterns (Redux Toolkit/Zustand for complex state)
 - **Testing**: Vitest with React Testing Library
 - **Code Quality**: ESLint, Prettier, strict TypeScript configuration
@@ -46,6 +48,9 @@ npm run type-check
 
 # Preview production build
 npm run preview
+
+# Add shadcn/ui components (example)
+npx shadcn@latest add button input card
 ```
 
 ## Architecture Overview
@@ -58,10 +63,11 @@ src/
 │   ├── atoms/          # Basic building blocks
 │   ├── molecules/      # Simple combinations
 │   ├── organisms/      # Complex components
-│   └── templates/      # Page layouts
+│   ├── templates/      # Page layouts
+│   └── ui/             # shadcn/ui components (auto-generated)
 ├── features/           # Feature-based modules
 ├── hooks/              # Global custom hooks
-├── lib/                # Third-party configurations
+├── lib/                # Third-party configurations and utils (including cn utility)
 ├── services/           # API services and external integrations
 ├── store/              # Global state management
 ├── types/              # Global TypeScript type definitions
@@ -74,6 +80,9 @@ src/
 - Use **functional components** with React hooks exclusively
 - Implement **compound components** for complex UI patterns
 - Maintain **single responsibility** principle for each component
+- **shadcn/ui Integration**: Prefer shadcn/ui components in `components/ui/` for base UI elements
+- **Custom Components**: Build complex features by composing shadcn/ui components in molecules/organisms
+- **Styling**: Use Tailwind CSS classes with shadcn/ui's design system tokens
 
 ### Code Standards
 All code must follow the comprehensive standards defined in:
@@ -120,6 +129,18 @@ Follow the three-branch strategy outlined in `docs/branching-strategy.md`:
 - Use React.memo for pure components with complex props
 - Apply useMemo/useCallback judiciously for expensive computations
 - Implement virtualization for long lists
+
+### shadcn/ui Integration Guidelines
+- **Component Discovery**: Use the shadcn MCP server to search and explore available components
+- **Installation**: Add components via `npx shadcn@latest add [component-name]`
+- **Customization**: Modify shadcn/ui components in place within `components/ui/` when needed
+- **Composition**: Build complex components by combining multiple shadcn/ui primitives
+- **Theming**: Leverage the built-in design system via CSS variables in `globals.css`
+- **Icons**: Use Lucide React icons which integrate seamlessly with shadcn/ui
+- **Best Practices**: 
+  - Import from `@/components/ui/[component]` for shadcn components
+  - Use `cn()` utility from `@/lib/utils` for conditional className merging
+  - Follow shadcn/ui patterns for component APIs and prop structures
 
 ### Accessibility Requirements
 - Follow WCAG 2.1 AA standards
