@@ -6,6 +6,7 @@ import { Text } from '@/components/atoms/Text'
 import { Link } from '@/components/atoms/Link'
 import { Spinner } from '@/components/atoms/Spinner'
 import { Timestamp } from '@/components/atoms/Timestamp'
+import { StatusDot } from '@/components/atoms/StatusDot'
 
 /**
  * Home page component demonstrating basic components and layout
@@ -649,6 +650,263 @@ export const HomePage: React.FC = () => {
           />
         </div>
       )}
+
+      {/* StatusDot Component Demo Section */}
+      <div className="mt-16 rounded-lg bg-orange-50 p-8">
+        <Text variant="h2" className="mb-8 text-center">
+          StatusDot Component Examples
+        </Text>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {/* Status Types & Sizes */}
+          <div>
+            <Text variant="h4" className="mb-4">Status Types & Sizes</Text>
+            <div className="space-y-4">
+              {/* Status Types */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Status Types</Text>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="online" aria-label="User is online" />
+                    <Text size="sm">Online</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="offline" aria-label="User is offline" />
+                    <Text size="sm">Offline</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="busy" aria-label="User is busy" />
+                    <Text size="sm">Busy</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="away" aria-label="User is away" />
+                    <Text size="sm">Away</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="error" aria-label="Error status" />
+                    <Text size="sm">Error</Text>
+                  </div>
+                </div>
+              </div>
+
+              {/* Sizes */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Size Variants</Text>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="online" size="sm" aria-label="Small online indicator" />
+                    <Text size="sm">Small</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="online" size="md" aria-label="Medium online indicator" />
+                    <Text size="sm">Medium</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="online" size="lg" aria-label="Large online indicator" />
+                    <Text size="sm">Large</Text>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pulsing Animation */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Pulsing Animation</Text>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="online" pulse aria-label="Pulsing online indicator" />
+                    <Text size="sm">Online (pulsing)</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="busy" pulse aria-label="Pulsing busy indicator" />
+                    <Text size="sm">Busy (pulsing)</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot status="error" pulse size="lg" aria-label="Pulsing error indicator" />
+                    <Text size="sm">Error (pulsing)</Text>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Custom Colors & Positioning */}
+          <div>
+            <Text variant="h4" className="mb-4">Custom Colors & Positioning</Text>
+            <div className="space-y-4">
+              {/* Custom Colors */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Custom Colors</Text>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <StatusDot customColor="#8b5cf6" size="md" aria-label="Purple custom status" />
+                    <Text size="sm">Purple</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot customColor="#f59e0b" size="md" aria-label="Orange custom status" />
+                    <Text size="sm">Orange</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusDot customColor="#06b6d4" size="md" aria-label="Cyan custom status" />
+                    <Text size="sm">Cyan</Text>
+                  </div>
+                </div>
+              </div>
+
+              {/* Positioning Examples */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Absolute Positioning</Text>
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Profile with status - top right */}
+                  <div className="relative">
+                    <div className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center">
+                      <Text size="sm" weight="bold" className="text-white">JD</Text>
+                    </div>
+                    <StatusDot
+                      status="online"
+                      position="absolute"
+                      placement="top-right"
+                      aria-label="John Doe is online"
+                    />
+                  </div>
+
+                  {/* Profile with status - bottom right */}
+                  <div className="relative">
+                    <div className="h-12 w-12 rounded-full bg-green-500 flex items-center justify-center">
+                      <Text size="sm" weight="bold" className="text-white">SM</Text>
+                    </div>
+                    <StatusDot
+                      status="busy"
+                      position="absolute"
+                      placement="bottom-right"
+                      aria-label="Sarah Miller is busy"
+                    />
+                  </div>
+
+                  {/* Profile with status - top left */}
+                  <div className="relative">
+                    <div className="h-12 w-12 rounded-full bg-purple-500 flex items-center justify-center">
+                      <Text size="sm" weight="bold" className="text-white">AK</Text>
+                    </div>
+                    <StatusDot
+                      status="away"
+                      position="absolute"
+                      placement="top-left"
+                      aria-label="Alex Kim is away"
+                    />
+                  </div>
+
+                  {/* Profile with status - bottom left */}
+                  <div className="relative">
+                    <div className="h-12 w-12 rounded-full bg-red-500 flex items-center justify-center">
+                      <Text size="sm" weight="bold" className="text-white">LJ</Text>
+                    </div>
+                    <StatusDot
+                      status="offline"
+                      position="absolute"
+                      placement="bottom-left"
+                      aria-label="Lisa Johnson is offline"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Real-world Use Cases */}
+          <div>
+            <Text variant="h4" className="mb-4">Real-world Use Cases</Text>
+            <div className="space-y-4">
+              {/* User List */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">User List</Text>
+                <div className="space-y-2">
+                  {[
+                    { name: 'John Doe', status: 'online', time: '2 min ago' },
+                    { name: 'Sarah Miller', status: 'busy', time: '5 min ago' },
+                    { name: 'Alex Kim', status: 'away', time: '1 hour ago' },
+                    { name: 'Lisa Johnson', status: 'offline', time: '2 hours ago' }
+                  ].map((user) => (
+                    <div key={user.name} className="flex items-center gap-3 rounded border border-orange-200 bg-white p-2">
+                      <div className="relative">
+                        <div className="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center">
+                          <Text size="xs" weight="bold">{user.name.split(' ').map(n => n[0]).join('')}</Text>
+                        </div>
+                        <StatusDot
+                          status={user.status as 'online' | 'busy' | 'away' | 'offline'}
+                          position="absolute"
+                          placement="bottom-right"
+                          size="sm"
+                          aria-label={`${user.name} is ${user.status}`}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <Text size="sm" weight="medium">{user.name}</Text>
+                        <Text size="xs" color="muted">Last seen {user.time}</Text>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* System Status */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">System Status</Text>
+                <div className="space-y-2">
+                  {[
+                    { service: 'API Server', status: 'online', uptime: '99.9%' },
+                    { service: 'Database', status: 'online', uptime: '99.8%' },
+                    { service: 'File Storage', status: 'error', uptime: '97.1%' },
+                    { service: 'CDN', status: 'away', uptime: '98.5%' }
+                  ].map((service) => (
+                    <div key={service.service} className="flex items-center justify-between rounded border border-orange-200 bg-white p-2">
+                      <div className="flex items-center gap-2">
+                        <StatusDot
+                          status={service.status as 'online' | 'error' | 'away'}
+                          pulse={service.status === 'error'}
+                          aria-label={`${service.service} status: ${service.status}`}
+                        />
+                        <Text size="sm" weight="medium">{service.service}</Text>
+                      </div>
+                      <Text size="xs" color="muted">{service.uptime}</Text>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Connection Status */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Connection Status</Text>
+                <div className="rounded border border-orange-200 bg-white p-3">
+                  <div className="flex items-center gap-2 mb-2">
+                    <StatusDot status="online" pulse aria-label="Connection is active" />
+                    <Text size="sm" weight="medium">Connected to server</Text>
+                  </div>
+                  <Text size="xs" color="muted">
+                    Last heartbeat: 2 seconds ago
+                  </Text>
+                  <Text size="xs" color="muted">
+                    Latency: 45ms
+                  </Text>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Features Notice */}
+        <div className="mt-8 rounded-lg bg-orange-100 p-4">
+          <Text variant="h5" className="mb-2">✨ StatusDot Features</Text>
+          <Text size="sm" color="muted">
+            • <strong>Multiple status types:</strong> Online, offline, busy, away, error states
+            • <strong>Flexible sizing:</strong> Small, medium, and large size options
+            • <strong>Pulsing animation:</strong> Eye-catching animations for active states
+            • <strong>Custom colors:</strong> Override with any color for custom status types
+            • <strong>Absolute positioning:</strong> Perfect for profile pictures and icons
+            • <strong>Accessibility:</strong> ARIA labels and semantic HTML structure
+            • <strong>CVA variants:</strong> Type-safe styling with class-variance-authority
+            • <strong>Compound variants:</strong> Smart animation combinations
+          </Text>
+        </div>
+      </div>
 
     </div>
   )
