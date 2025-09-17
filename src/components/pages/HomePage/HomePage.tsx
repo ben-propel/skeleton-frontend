@@ -7,6 +7,7 @@ import { Link } from '@/components/atoms/Link'
 import { Spinner } from '@/components/atoms/Spinner'
 import { Timestamp } from '@/components/atoms/Timestamp'
 import { StatusDot } from '@/components/atoms/StatusDot'
+import { MessageBubble } from '@/components/molecules/MessageBubble'
 
 /**
  * Home page component demonstrating basic components and layout
@@ -654,7 +655,7 @@ export const HomePage: React.FC = () => {
       {/* StatusDot Component Demo Section */}
       <div className="mt-16 rounded-lg bg-orange-50 p-8">
         <Text variant="h2" className="mb-8 text-center">
-          StatusDot Component Examples
+          Status Dot Component Examples
         </Text>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Status Types & Sizes */}
@@ -904,6 +905,426 @@ export const HomePage: React.FC = () => {
             • <strong>Accessibility:</strong> ARIA labels and semantic HTML structure
             • <strong>CVA variants:</strong> Type-safe styling with class-variance-authority
             • <strong>Compound variants:</strong> Smart animation combinations
+          </Text>
+        </div>
+      </div>
+
+      {/* Message Bubble Component Demo Section */}
+      <div className="mt-16 rounded-lg bg-blue-50 p-8">
+        <Text variant="h2" className="mb-8 text-center">
+          Message Bubble Component Examples
+        </Text>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+          {/* Message Shapes */}
+          <div>
+            <Text variant="h4" className="mb-4">Message Shapes</Text>
+            <div className="space-y-4">
+              {/* Shape Examples */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Rounded (Default)</Text>
+                <div className="space-y-2">
+                  <MessageBubble
+                    content="Rounded corners"
+                    variant="sent"
+                    shape="rounded"
+                    showTimestamp={false}
+                  />
+                  <MessageBubble
+                    content="Classic style"
+                    variant="received"
+                    shape="rounded"
+                    author={{ id: '1', name: 'User' }}
+                    showAuthor={false}
+                    showTimestamp={false}
+                  />
+                </div>
+              </div>
+
+
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Square</Text>
+                <div className="space-y-2">
+                  <MessageBubble
+                    content="Sharp corners"
+                    variant="sent"
+                    shape="square"
+                    showTimestamp={false}
+                  />
+                  <MessageBubble
+                    content="Modern look"
+                    variant="received"
+                    shape="square"
+                    author={{ id: '1', name: 'User' }}
+                    showAuthor={false}
+                    showTimestamp={false}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Pill</Text>
+                <div className="space-y-2">
+                  <MessageBubble
+                    content="Fully rounded"
+                    variant="sent"
+                    shape="pill"
+                    showTimestamp={false}
+                  />
+                  <MessageBubble
+                    content="Smooth style"
+                    variant="received"
+                    shape="pill"
+                    author={{ id: '1', name: 'User' }}
+                    showAuthor={false}
+                    showTimestamp={false}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">System Shape</Text>
+                <MessageBubble
+                  content="System messages work with all shapes"
+                  variant="system"
+                  shape="rounded"
+                  showTimestamp={false}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Message Variants */}
+          <div>
+            <Text variant="h4" className="mb-4">Message Variants</Text>
+            <div className="space-y-4">
+              {/* Sent Messages */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Sent Messages</Text>
+                <div className="space-y-3">
+                  <MessageBubble
+                    content="Hey! How are you doing?"
+                    variant="sent"
+                    timestamp={new Date(Date.now() - 2 * 60 * 1000)}
+                    status="delivered"
+                    showTimestamp
+                  />
+                  <MessageBubble
+                    content="Just finished working on the new MessageBubble component 🎉"
+                    variant="sent"
+                    timestamp={new Date(Date.now() - 5 * 60 * 1000)}
+                    status="read"
+                    reactions={[
+                      {
+                        emoji: '🎉',
+                        count: 2,
+                        users: [],
+                        currentUserReacted: false
+                      },
+                      {
+                        emoji: '👍',
+                        count: 1,
+                        users: [],
+                        currentUserReacted: true
+                      }
+                    ]}
+                    onReact={(emoji) => console.log('Reacted with:', emoji)}
+                  />
+                </div>
+              </div>
+
+              {/* Received Messages */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Received Messages</Text>
+                <div className="space-y-3">
+                  <MessageBubble
+                    content="That looks amazing! Great work on the component design."
+                    variant="received"
+                    author={{
+                      id: '2',
+                      name: 'Sarah Miller',
+                      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face'
+                    }}
+                    timestamp={new Date(Date.now() - 3 * 60 * 1000)}
+                    showAuthor
+                    showTimestamp
+                  />
+                  <MessageBubble
+                    content="Can't wait to use this in our chat interface!"
+                    variant="received"
+                    author={{
+                      id: '3',
+                      name: 'Alex Kim',
+                      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face'
+                    }}
+                    timestamp={new Date(Date.now() - 1 * 60 * 1000)}
+                    showAuthor
+                    showTimestamp
+                    reactions={[
+                      {
+                        emoji: '🚀',
+                        count: 3,
+                        users: [],
+                        currentUserReacted: true
+                      }
+                    ]}
+                    onReact={(emoji) => console.log('Reacted with:', emoji)}
+                  />
+                </div>
+              </div>
+
+              {/* System Messages */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">System Messages</Text>
+                <div className="space-y-3">
+                  <MessageBubble
+                    content="Sarah Miller joined the conversation"
+                    variant="system"
+                    timestamp={new Date(Date.now() - 10 * 60 * 1000)}
+                    showTimestamp
+                  />
+                  <MessageBubble
+                    content="Channel topic updated: 'MessageBubble Component Development'"
+                    variant="system"
+                    timestamp={new Date(Date.now() - 8 * 60 * 1000)}
+                    showTimestamp
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Message States */}
+          <div>
+            <Text variant="h4" className="mb-4">Message States & Features</Text>
+            <div className="space-y-4">
+              {/* Status Indicators */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Status Indicators</Text>
+                <div className="space-y-3">
+                  <MessageBubble
+                    content="Sending message..."
+                    variant="sent"
+                    status="sending"
+                    timestamp={new Date()}
+                    showTimestamp
+                  />
+                  <MessageBubble
+                    content="Message sent"
+                    variant="sent"
+                    status="sent"
+                    timestamp={new Date(Date.now() - 1 * 60 * 1000)}
+                    showTimestamp
+                  />
+                  <MessageBubble
+                    content="Message delivered"
+                    variant="sent"
+                    status="delivered"
+                    timestamp={new Date(Date.now() - 3 * 60 * 1000)}
+                    showTimestamp
+                  />
+                  <MessageBubble
+                    content="Message read"
+                    variant="sent"
+                    status="read"
+                    timestamp={new Date(Date.now() - 5 * 60 * 1000)}
+                    showTimestamp
+                  />
+                  <MessageBubble
+                    content="Failed to send"
+                    variant="sent"
+                    status="failed"
+                    timestamp={new Date(Date.now() - 2 * 60 * 1000)}
+                    showTimestamp
+                    onRetry={() => console.log('Retrying message...')}
+                  />
+                </div>
+              </div>
+
+              {/* Rich Content */}
+              <div>
+                <Text variant="h5" size="sm" className="mb-2">Rich Content</Text>
+                <div className="space-y-3">
+                  <MessageBubble
+                    content={
+                      <div>
+                        <Text size="sm" className="mb-2">Check out this cool feature!</Text>
+                        <div className="rounded bg-gray-100 p-2">
+                          <Text size="xs" color="muted" font="mono">
+                            const message = &quot;Hello World&quot;
+                          </Text>
+                        </div>
+                      </div>
+                    }
+                    variant="sent"
+                    timestamp={new Date(Date.now() - 4 * 60 * 1000)}
+                    status="delivered"
+                    showTimestamp
+                  />
+                  <MessageBubble
+                    content={
+                      <div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Icon name="FileText" size="sm" />
+                          <Text size="sm" weight="medium">Design_Mockup_v2.pdf</Text>
+                        </div>
+                        <Text size="xs" color="muted">2.3 MB • PDF Document</Text>
+                      </div>
+                    }
+                    variant="received"
+                    author={{
+                      id: '4',
+                      name: 'Design Team',
+                      avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=32&h=32&fit=crop&crop=face'
+                    }}
+                    timestamp={new Date(Date.now() - 6 * 60 * 1000)}
+                    showAuthor
+                    showTimestamp
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Real-world Chat Interface */}
+          <div>
+            <Text variant="h4" className="mb-4">Chat Interface Demo</Text>
+            <div className="rounded-lg border border-blue-200 bg-white p-4 max-h-80 overflow-y-auto">
+              <div className="space-y-4">
+                <MessageBubble
+                  content="Team standup starts in 10 minutes!"
+                  variant="system"
+                  timestamp={new Date(Date.now() - 30 * 60 * 1000)}
+                  showTimestamp
+                />
+
+                <MessageBubble
+                  content="Good morning everyone! 👋"
+                  variant="received"
+                  author={{
+                    id: '5',
+                    name: 'Team Lead',
+                    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face'
+                  }}
+                  timestamp={new Date(Date.now() - 25 * 60 * 1000)}
+                  showAuthor
+                  showTimestamp
+                  reactions={[
+                    {
+                      emoji: '👋',
+                      count: 4,
+                      users: [],
+                      currentUserReacted: true
+                    }
+                  ]}
+                  onReact={(emoji) => console.log('Reacted with:', emoji)}
+                />
+
+                <MessageBubble
+                  content="Ready for the demo!"
+                  variant="sent"
+                  timestamp={new Date(Date.now() - 22 * 60 * 1000)}
+                  status="read"
+                  showTimestamp
+                />
+
+                <MessageBubble
+                  content="The MessageBubble component is looking great. Love the accessibility features and the clean API design."
+                  variant="received"
+                  author={{
+                    id: '6',
+                    name: 'Frontend Dev',
+                    avatar: 'https://images.unsplash.com/photo-1507101105822-7472b28e22ac?w=32&h=32&fit=crop&crop=face'
+                  }}
+                  timestamp={new Date(Date.now() - 20 * 60 * 1000)}
+                  showAuthor
+                  showTimestamp
+                  reactions={[
+                    {
+                      emoji: '💯',
+                      count: 2,
+                      users: [],
+                      currentUserReacted: false
+                    },
+                    {
+                      emoji: '🎨',
+                      count: 1,
+                      users: [],
+                      currentUserReacted: true
+                    }
+                  ]}
+                  onReact={(emoji) => console.log('Reacted with:', emoji)}
+                />
+
+                <MessageBubble
+                  content="Thanks! The shadcn/ui integration makes it really flexible and the TypeScript types ensure type safety throughout."
+                  variant="sent"
+                  timestamp={new Date(Date.now() - 18 * 60 * 1000)}
+                  status="delivered"
+                  showTimestamp
+                />
+
+                <MessageBubble
+                  content="Should we add support for message threading in v2?"
+                  variant="received"
+                  author={{
+                    id: '7',
+                    name: 'Product Manager',
+                    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face'
+                  }}
+                  timestamp={new Date(Date.now() - 15 * 60 * 1000)}
+                  showAuthor
+                  showTimestamp
+                />
+
+                <MessageBubble
+                  content="Great idea! We can extend the component with thread support while maintaining backward compatibility."
+                  variant="sent"
+                  timestamp={new Date(Date.now() - 12 * 60 * 1000)}
+                  status="read"
+                  showTimestamp
+                />
+
+                <MessageBubble
+                  content="Perfect! I'll add that to the roadmap. 📋"
+                  variant="received"
+                  author={{
+                    id: '7',
+                    name: 'Product Manager',
+                    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face'
+                  }}
+                  timestamp={new Date(Date.now() - 10 * 60 * 1000)}
+                  showAuthor={false}
+                  showTimestamp
+                />
+
+                <MessageBubble
+                  content="Alex Kim is typing..."
+                  variant="system"
+                  timestamp={new Date(Date.now() - 5 * 1000)}
+                  showTimestamp
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Features Notice */}
+        <div className="mt-8 rounded-lg bg-blue-100 p-4">
+          <Text variant="h5" className="mb-2">✨ MessageBubble Features</Text>
+          <Text size="sm" color="muted">
+            • <strong>Message variants:</strong> Sent, received, and system message types
+            • <strong>Shape variants:</strong> Rounded, square, and pill shapes
+            • <strong>Status indicators:</strong> Sending, sent, delivered, read, and failed states
+            • <strong>Rich content support:</strong> Text, React nodes, images, files, and custom content
+            • <strong>Emoji reactions:</strong> Interactive reactions with user tracking
+            • <strong>Author information:</strong> User avatars, names, and metadata
+            • <strong>Timestamp formatting:</strong> Relative time with auto-refresh using date-fns
+            • <strong>Retry functionality:</strong> Built-in retry for failed messages
+            • <strong>Responsive design:</strong> Mobile-first with adaptive layouts
+            • <strong>Accessibility:</strong> ARIA labels, semantic HTML, and screen reader support
+            • <strong>shadcn/ui integration:</strong> Built with Card, Avatar, Badge, and Button primitives
+            • <strong>TypeScript support:</strong> Full type safety with comprehensive interfaces
+            • <strong>Animation:</strong> Smooth enter animations and status transitions
           </Text>
         </div>
       </div>
